@@ -140,16 +140,24 @@ h1 {
 }
 
 .sidebar a {
+    display: block;
+    width: 80%;
+    background-color: transparent;
     color: white;
     text-decoration: none;
     margin: 10px 0;
+    padding: 10px 15px;
     font-size: 16px;
+    border-radius: 6px;
+    text-align: left;
+    transition: background-color 0.3s;
+    text-align: center;
 }
 
-.sidebar a:hover {
-    background-color: #34495e;
-    padding: 5px 10px;
-    border-radius: 4px;
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #1abc9c;
+    text-align: center;
 }
 
 .main-content {
@@ -164,6 +172,7 @@ h1 {
     color: white;
     padding: 15px 0;
     text-align: center;
+    border-radius: 10px;
 }
 
 .footer {

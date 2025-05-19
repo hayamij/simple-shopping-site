@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="error"><?= $loginError ?></p>
         <?php endif; ?>
         <form method="POST" action="">
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Mật khẩu" required>
             <button type="submit">Đăng nhập</button>
         </form>

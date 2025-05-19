@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
 
     // Lấy chi tiết sản phẩm trong đơn hàng
     $detailQuery = "SELECT od.*, p.ProductName 
-                    FROM OrdersDetails od 
+                    FROM OrderDetails od 
                     JOIN Products p ON od.ProductID = p.ProductID 
                     WHERE od.OrderID = ?";
     $details = sqlsrv_query($conn, $detailQuery, array($id));
@@ -147,7 +147,7 @@ if (isset($_GET['id'])) {
                             <td><?php echo $detail['ProductID']; ?></td>
                             <td><?php echo $detail['ProductName']; ?></td>
                             <td><?php echo $detail['Quantity']; ?></td>
-                            <td><?php echo number_format($detail['Price'], 0, ',', '.'); ?> VNĐ</td>
+                            <td><?php echo number_format($detail['UnitPrice'], 0, ',', '.'); ?> VNĐ</td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>

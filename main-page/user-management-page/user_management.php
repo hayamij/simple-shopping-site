@@ -105,6 +105,13 @@ $users = sqlsrv_query($conn, $userQuery);
                         </td>
                     </tr>
                 <?php } ?>
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        <a href="add_user.php" style="display: inline-book; padding: 10px 20px; background-color: #2ecc71; color: white; text-decoration: none; border-radius: 6px;">
+                            + Thêm tài khoản mới
+                        </a>
+                    </td>
+                </tr>
             </table>
         </div>
 

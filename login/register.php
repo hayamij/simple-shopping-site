@@ -6,7 +6,7 @@ $successMessage = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //customerid tự động tăng, giá trị mặc định là 00001
-    $customerID = null;
+    // $customerID = null;
     $fullName = $_POST["fullname"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
@@ -22,21 +22,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $registerError = "Email hoặc số điện thoại đã được đăng ký";
     } else {
         // check customerid đã tồn tại, +1 để tạo customerid mới
-        $customerID = "00001";
-        $sql = "SELECT MAX(CustomerID) AS MaxCustomerID FROM Customers";
-        $params = array();
-        $stmt = sqlsrv_query($conn, $sql, $params);
-        if ($stmt && sqlsrv_has_rows($stmt)) {
-            $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-            $maxCustomerID = $row['MaxCustomerID'];
-            if ($maxCustomerID) {
-                $customerID = str_pad((int)$maxCustomerID + 1, 5, '0', STR_PAD_LEFT);
-            }
-        }
+        // $customerID = "00001";
+        // $sql = "SELECT MAX(CustomerID) AS MaxCustomerID FROM Customers";
+        // $params = array();
+        // $stmt = sqlsrv_query($conn, $sql, $params);
+        // if ($stmt && sqlsrv_has_rows($stmt)) {
+        //     $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+        //     $maxCustomerID = $row['MaxCustomerID'];
+        //     if ($maxCustomerID) {
+        //         $customerID = str_pad((int)$maxCustomerID + 1, 5, '0', STR_PAD_LEFT);
+        //     }
+        // }
         // Hashing
         $hashedPassword = hash('sha256', $password);
-        $insertSql = "INSERT INTO Customers (CustomerID, FullName, Email, Password, PhoneNumber, Address, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, GETDATE())";
-        $insertParams = array($customerID, $fullName, $email, $hashedPassword, $phone, $address);
+        $insertSql = "INSERT INTO Customers (FullName, Email, Password, PhoneNumber, Address, CreatedAt) VALUES (?, ?, ?, ?, ?, GETDATE())";
+        $insertParams = array($fullName, $email, $hashedPassword, $phone, $address);
         $insertStmt = sqlsrv_query($conn, $insertSql, $insertParams);
 
         if ($insertStmt) {
