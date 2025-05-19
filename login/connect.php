@@ -1,9 +1,9 @@
 <?php
-$serverName = "localhost";
+$serverName = "localhost"; // or your desktop name
 $connectionOptions = array(
-    "Database" => "dbms_mypham",
-    "Uid" => "phuongtuan",
-    "PWD" => "phuongtuan2312@",
+    "Database" => "databasename",
+    "Uid" => "username",
+    "PWD" => "yourpassword",
     "CharacterSet" => "UTF-8"
 );
 $conn = sqlsrv_connect($serverName, $connectionOptions);
