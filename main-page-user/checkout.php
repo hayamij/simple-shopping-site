@@ -21,7 +21,9 @@ $orderParams = [$customerID, $total, 'Pending'];
 $orderStmt = sqlsrv_query($conn, $insertOrder, $orderParams);
 
 if (!$orderStmt) {
-    die("Lỗi khi tạo đơn hàng: " . print_r(sqlsrv_errors(), true));
+    $_SESSION['error'] = "Không đủ hàng trong kho cho sản phẩm: " . $item['ProductName'];
+    header("Location: cart.php");
+    exit();
 }
 
 // 2. Lấy OrderID vừa tạo

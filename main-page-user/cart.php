@@ -64,7 +64,7 @@ if (isset($_POST['checkout']) && !empty($_SESSION['cart'])) {
         $params = [$orderID, $item['ProductID'], $item['Quantity'], $item['Price']];
         $detailStmt = sqlsrv_query($conn, $addDetail, $params);
 
-        if (!$detailStmt) {
+        if (!$detailStmt || !$params || !$addDetail) {
             die("<script>alert('Không đủ hàng trong kho cho sản phẩm: {$item['ProductName']}');</script>");
         }
     }

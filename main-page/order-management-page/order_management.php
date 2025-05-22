@@ -71,11 +71,11 @@ $orders = sqlsrv_query($conn, $orderQuery);
 <body>
     <aside class="sidebar">
         <h2>Admin</h2>
-        <a href="../home-page/home.php">Trang chủ</a>
-        <a href="../product-management-page/product_management.php">Quản lý sản phẩm</a>
-        <a href="../user-management-page/user_management.php">Quản lý người dùng</a>
-        <a href="../order-management-page/order_management.php">Quản lý đơn hàng</a>
-        <a href="../../login/login.php">Đăng xuất</a>
+        <a href="../home-page/home.php">🏠 Trang chủ</a>
+        <a href="../product-management-page/product_management.php">🛍 Quản lý sản phẩm</a>
+        <a href="../user-management-page/user_management.php">👤 Quản lý người dùng</a>
+        <a href="../order-management-page/order_management.php">📜 Quản lý đơn hàng</a>
+        <a href="../../login/login.php">🚪 Đăng xuất</a>
     </aside>
 
     <div class="main-content">
