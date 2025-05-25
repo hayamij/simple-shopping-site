@@ -1,30 +1,27 @@
 <?php
 session_start();
-include '../../login/connect.php';
-
-if (!isset($_SESSION['CustomerID'])) {
-    header('Location: ../../login/login.php');
-    exit();
+include '../login/connect.php';
+// if (!isset($_SESSION['CustomerID']) || !isset($_GET['product_id'])) {
+//     header('Location: product_list.php');
+//     exit();
+// }
+$productId = $_GET['ProductID'];
+$query = "SELECT * FROM Products WHERE ProductID = ?";
+$stmt = sqlsrv_query($conn, $query, array($productId));
+if ($stmt === false) {
+    die(print_r(sqlsrv_errors(), true));
 }
-
-$customerID = $_SESSION['CustomerID'];
-$result = sqlsrv_query($conn, "SELECT FullName FROM Customers WHERE CustomerID = $customerID");
-$row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
-if (!$row || strtolower($row['FullName']) != 'admin') {
-    echo "Bạn không có quyền truy cập trang này.";
-    exit();
-}
-
-// Lấy thông tin sản phẩm
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $query = "SELECT * FROM Products WHERE ProductID = ?";
-    $stmt = sqlsrv_query($conn, $query, array($id));
-    $product = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-} else {
+$product = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+if ($product === false) {
     echo "Không tìm thấy sản phẩm.";
     exit();
 }
+if (session_status() == PHP_SESSION_NONE) session_start();
+if (!isset($_SESSION['CustomerID'])) {
+    header('Location: ../login/login.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +29,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Chi tiết Sản phẩm</title>
-    <link rel="stylesheet" href="../style/style_index.css">
+    <link rel="stylesheet" href="../main-page/style/style_index.css">
     <style>
         .detail-container {
             display: flex;
@@ -82,12 +79,12 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     <aside class="sidebar">
-        <h2>Admin</h2>
-        <a href="../home-page/home.php">🏠 Trang chủ</a>
-        <a href="../product-management-page/product_management.php">🛍 Quản lý sản phẩm</a>
-        <a href="../user-management-page/user_management.php">👤 Quản lý người dùng</a>
-        <a href="../order-management-page/order_management.php">📜 Quản lý đơn hàng</a>
-        <a href="../../login/login.php">🚪 Đăng xuất</a>
+        <h2>Xin chào</h2>
+            <a href="main.php">🏠 Trang chủ</a>
+            <a href="product_list.php">🛍 Danh sách sản phẩm</a>
+            <a href="cart.php">🛒 Giỏ hàng</a>
+            <a href="order_history.php">📜 Lịch sử mua hàng</a>
+            <a href="../login/login.php">🚪 Đăng xuất</a>
     </aside>
 
     <div class="main-content">
@@ -104,13 +101,12 @@ if (isset($_GET['id'])) {
                 <p><strong>Số lượng tồn:</strong> <?php echo $product['StockQuantity']; ?></p>
                 <p><strong>Mô tả:</strong><br><?php echo nl2br($product['Description']); ?></p>
             </div>
-
-            <a class="back-btn" href="../product-management-page/product_management.php">Quay lại</a>
+            <a class="back-btn" href="product_list.php">Quay lại</a>
         </div>
 
-        <!-- <footer class="footer">
+        <footer class="footer">
             <p>© 2025 Website Bán Hàng. All rights reserved.</p>
-        </footer> -->
+        </footer>
     </div>
 </body>
 </html>

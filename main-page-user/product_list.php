@@ -115,6 +115,7 @@ if (isset($_GET['search_product'])) {
                         <input type="hidden" name="ProductName" value="<?= $row['ProductName'] ?>">
                         <input type="hidden" name="Price" value="<?= $row['Price'] ?>">
                         <button type="submit">Thêm vào giỏ</button>
+                        <button type="button" onclick="location.href='detail_product.php?ProductID=<?= $row['ProductID'] ?>'">Chi tiết</button>
                     </form>
                 </div>
             <?php } ?>

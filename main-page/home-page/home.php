@@ -32,6 +32,9 @@ if (isset($_GET['customer_id'])) {
 // Lấy doanh thu theo tháng
 $revenueResults = sqlsrv_query($conn, "SELECT * FROM vw_RevenueByMonth");
 
+// Lấy hàng tồn kho
+$inventoryResults = sqlsrv_query($conn, "SELECT * FROM vw_ProductsInStock");
+
 // Lịch sử mua hàng
 $historyResults = null;
 if (isset($_GET['history_customer_id'])) {
@@ -188,6 +191,19 @@ if (isset($_GET['history_customer_id'])) {
             </table>
         <?php endif; ?>
     </div>
+
+    <div class="form-section">
+        <h2>📦 Hàng tồn kho</h2>
+        <table>
+            <tr><th>Tên sản phẩm</th><th>Số lượng</th><th>Giá</th></tr>
+            <?php while($inv = sqlsrv_fetch_array($inventoryResults, SQLSRV_FETCH_ASSOC)): ?>
+                <tr>
+                    <td><?= $inv['ProductName'] ?></td>
+                    <td><?= $inv['StockQuantity'] ?></td>
+                    <td><?= number_format($inv['Price'], 0, ',', '.') ?> VNĐ</td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
 
     <footer class="footer">
         <p>© 2025 Hệ thống quản lý mỹ phẩm. All rights reserved.</p>

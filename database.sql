@@ -75,7 +75,8 @@ INSERT INTO Customers (FullName, Email, Password, PhoneNumber, Address, CreatedA
 (N'Châu Minh Tuấn', 'tuan.chau@gmail.com', '601422fba074b521d683f821814c3996f6107591d961f7cd612f7157b43aa3a8', '0977889900', N'45 Điện Biên Phủ, Quận Bình Thạnh', GETDATE()),
 (N'Mai Thanh Lan', 'lan.mai@gmail.com', 'b5abfc1711b87fba0fc7fc35c929dea60753c474d2843b499986e86190abfe61', '0955332211', N'60 Nguyễn Thái Bình, Quận 1', GETDATE()),
 (N'Trần Văn An', 'an.tran@gmail.com', 'd3e525dc1ccc3fb70c496d615fd2191f4aa4c61e6ba909c70f9b6090336e4fd4', '0988111333', N'12B Nguyễn Trãi, Quận 5', GETDATE()),
-(N'Đinh Quang Hải', 'hai.dinh@gmail.com', '8c4dc7ba8ae27651ddc9360984c7aae1ee8c2e09529b851c23e1815ff26afc1d', '0909988776', N'77 Trần Hưng Đạo, Quận 1', GETDATE());
+(N'Đinh Quang Hải', 'hai.dinh@gmail.com', '8c4dc7ba8ae27651ddc9360984c7aae1ee8c2e09529b851c23e1815ff26afc1d', '0909988776', N'77 Trần Hưng Đạo, Quận 1', GETDATE()),
+(N'admin', 'admin@gmail.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '0369164853' , N'25 Man thiện, Quận 9', GETDATE());
 
 INSERT INTO Products (ProductName, Category, Price, StockQuantity, ImageURL, Description) VALUES
 (N'La Roche-Posay Effaclar Gel', N'Chống nắng', 891122.5, 93, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/194/749/products/lrp-04-062.png?v=1615437096107', N'Sản phẩm La Roche-Posay Effaclar Gel thuộc danh mục Chống nắng'),
