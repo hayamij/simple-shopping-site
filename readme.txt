@@ -26,8 +26,8 @@ put php_pdo_sqlsrv_82_ts_x64.dll and php_sqlsrv_82_ts_x64.dll (based on php vers
 open XAMPP Control Panel, click config button in Apache service, click 'php.ini'
 press ctrl + F3 and find 'Module Settings'
 add these lines at the bottom:"
-extension=php_ftp.dll
-extension=php_sqlsrv_82_ts_x64.dll"
+extension=php_sqlsrv_82_ts_x64.dll
+extension=php_pdo_sqlsrv_82_ts_x64.dll "
 save and close
 
 Enjoy! - Hayamij 
